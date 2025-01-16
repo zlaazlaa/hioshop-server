@@ -3,6 +3,7 @@
   "description": "hioshop - open source mini program shop",
   "version": "1.0.0",
   "scripts": {
+    "build": "npm install",
     "start": "node development.js",
     "compile": "babel --no-babelrc src/ --presets think-node --out-dir app/",
     "lint": "eslint src/",
