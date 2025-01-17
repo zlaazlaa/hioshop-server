@@ -24,7 +24,7 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t backend .
+          docker build -t ${{ secrets.TCR_IMAGE_NAME }} .
 
       - name: Log in to Tencent Cloud Registry (TCR)
         run: |
@@ -32,7 +32,7 @@ jobs:
 
       - name: Tag Docker image for TCR
         run: |
-          docker tag my-image:latest ccr.ccs.tencentyun.com/${{ secrets.TCR_REPOSITORY }}:${{ secrets.TCR_TAG }}
+          docker tag ${{ secrets.TCR_IMAGE_NAME }}:latest ccr.ccs.tencentyun.com/${{ secrets.TCR_REPOSITORY }}:${{ secrets.TCR_TAG }}
 
       - name: Push Docker image to TCR
         run: |
