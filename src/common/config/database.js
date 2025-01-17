@@ -2,12 +2,12 @@ const mysql = require('think-model-mysql');
 
 module.exports = {
     handle: mysql,
-    database: 'hiolabsDB',
+    database: process.env.DB_NAME || 'hiolabsDB',
     prefix: 'hiolabs_',
     encoding: 'utf8mb4',
-    host: '127.0.0.1',
-    port: '3306',
-    user: 'root',
-    password: '123123123',
+    host: process.env.DB_HOST || '127.0.0.1',
+    port: process.env.DB_PORT || '3306',
+    user: process.env.DB_USER || 'root',
+    password: process.env.DB_PASSWORD || '123123123',
     dateStrings: true
 };
