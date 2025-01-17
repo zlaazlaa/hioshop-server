@@ -24,14 +24,13 @@ jobs:
 
       - name: Replace database credentials in database.js
         run: |
-          sed -i 's/hiolabsDB/${{ secrets.DB_NAME }}/g' ./src/common/config/database.js
           sed -i 's/127.0.0.1/${{ secrets.DB_HOST }}/g' ./src/common/config/database.js
-          sed -i 's/3306/${{ secrets.DB_PORT }}/g' ./src/common/config/database.js
           sed -i 's/root/${{ secrets.DB_USER }}/g' ./src/common/config/database.js
           sed -i 's/123123123/${{ secrets.DB_PASSWORD }}/g' ./src/common/config/database.js
 
       - name: Build Docker image
         run: |
+          cat ./src/common/config/database.js
           docker build -t ${{ secrets.TCR_IMAGE_NAME }} .
 
       - name: Log in to Tencent Cloud Registry (TCR)
