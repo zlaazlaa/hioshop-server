@@ -1,0 +1,39 @@
+name: Build and Deploy to TCR
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: |
+          npm install
+
+      - name: Build Docker image
+        run: |
+          docker build -t backend .
+
+      - name: Log in to Tencent Cloud Registry (TCR)
+        run: |
+          echo ${{ secrets.TCR_PASSWORD }} | docker login ccr.ccs.tencentyun.com --username=${{ secrets.TCR_USERNAME }} --password-stdin
+
+      - name: Tag Docker image for TCR
+        run: |
+          docker tag my-image:latest ccr.ccs.tencentyun.com/${{ secrets.TCR_REPOSITORY }}:${{ secrets.TCR_TAG }}
+
+      - name: Push Docker image to TCR
+        run: |
+          docker push ccr.ccs.tencentyun.com/${{ secrets.TCR_REPOSITORY }}:${{ secrets.TCR_TAG }}
