@@ -1,3 +1,4 @@
+
 name: Build and Deploy to TCR
 
 on:
@@ -25,6 +26,7 @@ jobs:
       - name: Replace database credentials in database.js
         run: |
           sed -i 's/127.0.0.1/${{ secrets.DB_HOST }}/g' ./src/common/config/database.js
+          sed -i 's/3306/${{ secrets.DB_PORT }}/g' ./src/common/config/database.js
           sed -i 's/root/${{ secrets.DB_USER }}/g' ./src/common/config/database.js
           sed -i 's/123123123/${{ secrets.DB_PASSWORD }}/g' ./src/common/config/database.js
 
