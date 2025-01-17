@@ -1,3 +1,4 @@
+[![Build and Deploy to TCR](https://github.com/zlaazlaa/hioshop-server/actions/workflows/build-and-deploy.yml/badge.svg)](https://github.com/zlaazlaa/hioshop-server/actions/workflows/build-and-deploy.yml)
 ### 海风小店，开源商城（服务端）
 
 + 基于开源项目NideShop重建，精简了一些功能的同时完善了一些功能，并重新设计了UI
