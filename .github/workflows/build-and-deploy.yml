@@ -28,6 +28,13 @@ jobs:
           sed -i 's/root/${{ secrets.DB_USER }}/g' ./src/common/config/database.js
           sed -i 's/123123123/${{ secrets.DB_PASSWORD }}/g' ./src/common/config/database.js
 
+      - name: Replace wechat credentials in config.js
+        run: |
+          sed -i 's/wx7af111110000000/${{ secrets.APP_ID }}/g' ./src/common/config/config.js
+          sed -i 's/cb8e5adce569f9bddce5b8123123e1115aaddce505/${{ secrets.APP_SECRET }}/g' ./src/common/config/config.js
+          sed -i 's/15988888888/${{ secrets.MCH_ID }}/g' ./src/common/config/config.js
+          sed -i 's/asdasdasdasdasdasdasd/${{ secrets.PARTNER_KEY }}/g' ./src/common/config/config.js
+
       - name: Build Docker image
         run: |
           cat ./src/common/config/database.js
