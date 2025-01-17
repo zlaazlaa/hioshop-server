@@ -34,7 +34,7 @@ jobs:
           sed -i 's/cb8e5adce569f9bddce5b8123123e1115aaddce505/${{ secrets.APP_SECRET }}/g' ./src/common/config/config.js
           sed -i 's/15988888888/${{ secrets.MCH_ID }}/g' ./src/common/config/config.js
           sed -i 's/asdasdasdasdasdasdasd/${{ secrets.PARTNER_KEY }}/g' ./src/common/config/config.js
-          sed -i 's/https://www.您的域名.com/${{ secrets.BACKEND_URL }}/g' ./src/common/config/config.js
+          sed -i 's/https:\/\/www.您的域名.com/${{ secrets.BACKEND_URL }}/g' ./src/common/config/config.js
 
       - name: Build Docker image
         run: |
