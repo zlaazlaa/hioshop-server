@@ -1,8 +1,8 @@
 module.exports = class extends think.Service {
-	async getAzureBlobConnectionString() {
-		let connection_string = think.config('azure_blob.connection_string');
+	async getAzureBlobSASString() {
+		let sas_string = think.config('azure_blob.sas_string');
 		let data = {
-			connectionString: connection_string
+			sasString: sas_string
 		};
 		return data;
 	}

@@ -32,12 +32,12 @@ module.exports = class extends Base {
         };
         return this.success(info);
     }
-	async getAzureBlobConnectionStringAction(){
+	async getAzureBlobSASStringAction(){
 		const AzureBlobService = this.service('azure_blob'); // 服务里返回token
-		let data = await AzureBlobService.getAzureBlobConnectionString(); // 取得token值 goods
-		let connectionString = data.connectionString;
+		let data = await AzureBlobService.getAzureBlobSASString(); // 取得token值 goods
+		let sasString = data.sasString;
 		let info ={
-			connectionString:connectionString
+			sasString:sasString
 		};
 		return this.success(info);
 	}
