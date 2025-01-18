@@ -32,6 +32,15 @@ module.exports = class extends Base {
         };
         return this.success(info);
     }
+	async getAzureBlobConnectionStringAction(){
+		const AzureBlobService = this.service('azure_blob'); // 服务里返回token
+		let data = await AzureBlobService.getAzureBlobConnectionString(); // 取得token值 goods
+		let connectionString = data.connectionString;
+		let info ={
+			connectionString:connectionString
+		};
+		return this.success(info);
+	}
     async mainAction() {
         const index = this.get('pindex');
         console.log('index:' + index);
