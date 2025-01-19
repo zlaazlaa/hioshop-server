@@ -35,9 +35,9 @@ module.exports = class extends Base {
 	async getAzureBlobSASStringAction(){
 		const AzureBlobService = this.service('azure_blob'); // 服务里返回token
 		let data = await AzureBlobService.getAzureBlobSASString(); // 取得token值 goods
-		let sasString = data.sasString;
+		let sasStringBase64 = data.sasStringBase64;
 		let info ={
-			sasString:sasString
+			sasStringBase64:sasStringBase64
 		};
 		return this.success(info);
 	}
