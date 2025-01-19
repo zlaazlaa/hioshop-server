@@ -69,7 +69,7 @@ module.exports = class extends Base {
         try {
             const returnParams = await WeixinSerivce.createUnifiedOrder({
                 openid: openid,
-                body: '[海风小店]：' + orderInfo.order_sn,
+                body: '[丽都水站]：' + orderInfo.order_sn,
                 out_trade_no: orderInfo.order_sn,
                 total_fee: parseInt(orderInfo.actual_price * 100),
                 spbill_create_ip: ''
